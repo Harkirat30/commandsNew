@@ -14,3 +14,5 @@ command -->> *tee* --- used to send output to a file as well as standard out.. M
 EXAMPLE --------------------->>>>>>>>>>>>>>>>   *echo "$(minikube ip) harkirat-singh.com" | sudo tee -a /etc/hosts*
 
 
+to get the Ip of the system use -->> hostname -I command 
+Following commands are there to get IP ---->> ip a, ifconfig , hostname -I
