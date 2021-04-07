@@ -12,6 +12,9 @@ A connection string is required to be passed as a URL so that containers can con
 
 *Debugging from the container in Cloud Atlas*
 
+python3
+from pymongo import MongoClient
+
 
 
 
@@ -73,3 +76,17 @@ First we need to copy all the ref and template data
 
 firstly need to copy everything and then after that need to use the below command to restore to the respective database - REF_DATA or TEMPLATE_DATA 
 mongorestore mongodb+srv://tsuat_admin:wj6QmPVDARlE7MOI@tsuat.pyju3.mongodb.net/?retryWrites=true&w=majority .
+
+
+
+
+*********************************************************************************************
+*Using Mongo Atlas*
+
+1) pip3 install --user dnspython
+2) python3
+3) from pymongo import MongoClient
+4) client=MongoClient("ConnectionString")
+5) client.list_database_names()  - this will list all database names
+
+Note: you should have your Ip white listed and also conection string should have the correct username and password 
