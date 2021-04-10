@@ -85,8 +85,12 @@ mongorestore mongodb+srv://tsuat_admin:wj6QmPVDARlE7MOI@tsuat.pyju3.mongodb.net/
 
 1) pip3 install --user dnspython
 2) python3
-3) from pymongo import MongoClient
+3) from pymongo import MongoClient    (#MongoClient is a class which will create a client object for you )
 4) client=MongoClient("ConnectionString")
 5) client.list_database_names()  - this will list all database names
 
 Note: you should have your Ip white listed and also conection string should have the correct username and password 
+Fetching a paticular Database
+6) db=client.get_database('users')      #this command will get the users Database 
+Note: A database has multiple collections inside it
+7) 

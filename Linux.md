@@ -34,3 +34,28 @@ Whenever you are installing something using pip or pip3 - use the followuing syn
 pip defaults to installing Python packages to a system directory (such as /usr/local/lib/python3.4). This requires root access.
 
 --user makes pip install packages in your home directory instead, which doesn't require any special privileges.
+
+**************************************************************
+ *Trying to login as a user sverma* --Logging in as a Different USer
+ ---> Command -->> su -sverma
+ 
+ # becoming a root user
+ To become a root user your User need to have appropiate field added in visudo file - /etc/sudoers.tmp and 
+ you can become root user by command --->>> sudo su -
+ 
+ # checking uid of a user
+ If you want to check the uid,gid and group of the user run the command --> id <user> , eg - id harkirat30
+ groups can be checked in ------->>> cat /etc/group
+ 
+ # checking os version
+ uname -r ---->> command will give OS version
+ 
+ # checking time stamp
+ ls -ltr command is used to check the time stamp 
+ 
+ du command is used to check the disk usage of a paticular directory
+ du -h : will give size properly
+ du -c : Total value by current Working Dir
+ du -a : will give hidden files value also
+ 
+ df -h : where my disk is mounted 
