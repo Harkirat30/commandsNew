@@ -8,7 +8,8 @@ Date: "Mar-28,2021"
 port *80* is for http and *443* is for https traffic
 ssh - 22 
 Command -->>> *netstat -n* {to see the active connections}
-Command ->>>> *netstat -a -b -n* 
+Command ->>>> *netstat -a -n* 
+
 command -->> *tee* --- used to send output to a file as well as standard out.. Meaning you won't have to write 2 commands , tee can be used 
 *-a* flag can be used if you want tee to append to a file 
 EXAMPLE --------------------->>>>>>>>>>>>>>>>   *echo "$(minikube ip) harkirat-singh.com" | sudo tee -a /etc/hosts*
@@ -33,7 +34,7 @@ Whenever you are installing something using pip or pip3 - use the followuing syn
 
 pip defaults to installing Python packages to a system directory (such as /usr/local/lib/python3.4). This requires root access.
 
---user makes pip install packages in your home directory instead, which doesn't require any special privileges.
+**--user makes pip install packages in your home directory instead, which doesn't require any special privileges.**
 
 **************************************************************
  *Trying to login as a user sverma* --Logging in as a Different USer
@@ -59,3 +60,37 @@ pip defaults to installing Python packages to a system directory (such as /usr/l
  du -a : will give hidden files value also
  
  df -h : where my disk is mounted 
+
+ ****************
+ Note : Everything gets installed in usr/share
+
+bc is  a language for doing arithmetic operations 
+scale will set the value upto that decimal places 
+to use math library we need to use -l 
+
+LANG=C
+
+***********************
+chmod [options] mode filename
+options -R(recursive) , -f (force) , -v (verbose)
+**r(4),w(2),x(1)**
+eg - chmod -R 774 filename
+
+
+If DHCP is enabled then the Ip address is Dynamic and vice versa
+
+gzip and gunzip is to decompress and extract files in Linux
+
+*******************************************
+*tar and untar*
+
+tar cvf Tarname filename1 filename2 and tar -xvf Tarname to compress and decompress multiple tar files
+
+sudo useradd rohan
+sudo passwd rohan
+
+gnome-terminal command will open a new terminal 
+IFS=' ' read -r line   :: Input redirection
+
+*******************
+

@@ -10,21 +10,13 @@ db.createUser({ user: "nfr", pwd: "cUtF3Mk7s%40RY8%2ADAv3z",roles:["userAdminAny
 **Cloud ATLAS**
 A connection string is required to be passed as a URL so that containers can connect with Mongo Atlas , once the Cluster creation is complete in Mongo Atlas
 
-*Debugging from the container in Cloud Atlas*
-
-python3
-from pymongo import MongoClient
-
-
-
-
 
 
 
 ************************************
 ## restoring mongo and Maria DB
 ## Restore Maria 
-kubectl cp /home/harkirat30/Desktop/Traydstream/Repo/Dev/gtx-db/data/mariadb/restore/gtx-db/ $pod_db:/tmp/M/
+kubectl cp /home/harkirat30/Desktop/Traydstream/Repo/Dev/gtx-db/data/mariadb/restore/gtx-db/ **$pod_db:/tmp/M/**
  mysql -u root -p
  Enter password (You would be able to find the password in Maria)
  create database GTX_CC;
@@ -81,16 +73,26 @@ mongorestore mongodb+srv://tsuat_admin:wj6QmPVDARlE7MOI@tsuat.pyju3.mongodb.net/
 
 
 *********************************************************************************************
-*Using Mongo Atlas*
+*Using Mongo Atlas* *Connecting with MongoDB inside Atlas*
+*Debugging from the container in Cloud Atlas*
 
-1) pip3 install --user dnspython
+1) pip3 install --user dnspython  **(Installing the dnspython module)**
 2) python3
-3) from pymongo import MongoClient    (#MongoClient is a class which will create a client object for you )
-4) client=MongoClient("ConnectionString")
+3) from pymongo import MongoClient    **(#MongoClient is a class which will create a client object for you )**
+4) client=MongoClient("ConnectionString")   **Connection string you will get from Mongo Atlas**
 5) client.list_database_names()  - this will list all database names
 
-Note: you should have your Ip white listed and also conection string should have the correct username and password 
-Fetching a paticular Database
+# *Note: you should have your Ip white listed and also conection string should have the correct username and password Fetching a paticular Database**
+
 6) db=client.get_database('users')      #this command will get the users Database 
 Note: A database has multiple collections inside it
-7) 
+
+
+
+************************************************************************************************
+Commands for Mongo
+
+1) INSERT INTO RuleOrigin (Rules_RuleID, RuleBook_RuleBookID) VALUES ('8175', '581');
+2)  select * from Rules where RuleID=8175; 
+3) 
+

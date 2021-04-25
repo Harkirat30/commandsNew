@@ -1,4 +1,4 @@
-1) Command ->docker run -it -d ubuntu
+1) Command -> docker run -it -d ubuntu
 This will keep running the container in Daemon mode -( -d is for daemon)
 -it is for i->interactive and t is for tty
 -d means Daemon mode and it will send it to the background
