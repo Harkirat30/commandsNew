@@ -94,3 +94,14 @@ IFS=' ' read -r line   :: Input redirection
 
 *******************
 
+*SCP COMMAND*
+
+# Pre-requisites 
+
+1) service ssh start on both machines
+2) options --> scp -c (for compressing files )
+3) scp -v (verbose)
+4) The key should be present at ssh path --->>> ~/.ssh as by default scp looks at the ssh path 
+
+Command --->>  **scp -i <pathtothekeyshared> <filetobetransferred> username@ip:/path/**
+
