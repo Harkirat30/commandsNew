@@ -105,3 +105,42 @@ IFS=' ' read -r line   :: Input redirection
 
 Command --->>  **scp -i <pathtothekeyshared> <filetobetransferred> username@ip:/path/**
 
+How to find timezone -->> cat /etc/timezone
+
+
+*************************************
+
+*DATE COMMAND*
+
+*****DATE IN SHELL SCRIPT*****************************
+
+command ->> date
+
+1) date +%s   
+2) date +%m   - month 
+3) date +%M   - minute
+4) date +%H   - hour
+5) date +%S   - second
+6) date +%d   - day of the month
+7) date +%Y   - Year in 2 digit format
+8) date +%m/%d/%Y  - 06/10/2021
+9) date +%m/%d/%y  - 06/10/21
+10) date +%F  - 2021-06-10
+11) date +%a - Thu
+12) date +%A - Thursday
+13) date +%H:%M:%S - Timestamp - 12:23:59
+14) man date 
+15) %n - shifting to a new line
+16) date +Hours:%H%nMinutes:%M%nSeconds:%S  -- generates output in diff lines
+17) date +%D --> 06/10/21
+18) Want to give a specific date --> date -d "1/2/2016 1am"  ------>>> Saturday 02 January 2016 01:00:00 AM IST
+19) date -d "1/2/2016 1:12:12" --->> Saturday 02 January 2016 01:12:12 AM IST
+20) Finding day -->> date -d "1/2/2016" +%a  --output is Sat
+21) Finding day -->> date -d "1/2/2016" +%A  --output is Saturday
+22) date -d "July 2 2019" +%a -- Tue
+23) date -d "tomorrow"
+24) date -d tomorrow +"%d-%m-%y" , if today is 10June, we will get --> 11-06-21
+25) date -d last-week +"%d-%m-%y"  -- command to get one week prior date --- > 03-06-21
+26) date -d 11 days +"%d-%m-%y"
+27) date -d -11 days +"%d-%m-%y"
+28) date -d "-33 days" +"%d-%m-%y" --value comes as 08-05-21 and current date is 10-06-21

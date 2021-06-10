@@ -32,3 +32,7 @@ release in which this feature will be incorporated may well be unknown at that p
 
 
 
+
+git config user.name "Author Name"
+git config user.email "author@email.com"
+
