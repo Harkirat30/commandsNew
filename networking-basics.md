@@ -150,6 +150,120 @@ We can also scan external IP addresses or host names
 nmap google.com
 
 
+******************************************************************************
+
+
+
+# so if you regularly want to scan few hosts - you can put that in a file and use it 
+
+file -->>
+
+traydstream.io
+192.168.1.8
+192.168.1.1
+
+save the file as networks.txt
+
+command -->> nmap -iL ~/networks.txt 
+
+SO above command will scan all the hosts in the networks file - starting from the server with DNS names and then the 2 IP's mentioned 
+
+# nmap -A 192.168.0.0-100 
+-A flag will give us the version of the service also 
+also it will give us the OS type, computer name etc
+
+
+SSH 
+
+ssh user@<IP or Server DNS name>
+
+*******SFTP to transfer files between machines********
+
+FTP is called file transfer protocol 
+It uses port 21, and basically it transfers files between 2 machines
+In FTP everything is transferred in clear text , so it's unsecure so we use SFTP --> secure file transfer protocol 
+
+command -->>  sftp user@<IP or DNSserver> 
+so you get moved on to that computer 
+
+ls - get the current directory 
+# lls - get the current path of local host 
+
+command to transfer the file -->>> put name.txt (this will upload the file name.txt in local host to smtp server)
+command to get the file from smtp to local -->>> get filename 
+
+
+## Setting up SSH host 
+
+sudo apt get install openssh-server 
+sudo vi /etc/ssh/sshd_config
+
+we can change the port 22 to port 2212
+and under authentication we are going to change Permit root login to no
+
+add line 
+Allowusers harkirat30
+It will restrict all other uses to ssh 
+
+then restart the ssh service
+sudo systemctl restart ssh 
+
+
+
+
+##############
+
+CIDR (Classless inter domain routing)
+eg -->>> 192.168.1.0/24 
+          network/no of hosts
+
+IPV4=32 bit 
+
+so /24 means 32-24=8 and 2^8=256 
+so /24 means 256 IP addresses 
+
+also --> 192.168.1.128/25 means 
+
+32-25=7 , 2^7=128 IP addresses on a paticular subnet (192.168.1.128)
+
+HENCE >>>   ip/32 means a single IP address
+
+so 192.168.1.0/24 represents CIDR range of 192.168.1.0 to 192.168.1.254 as .0 is the name of the network specifying the subnet and .255 is the broadcast , and in total we have 256
+
+So everytime you loose 2 IP addreses - 0 and last one 
+
+another eg -->> 192.168.1.128/25 --- it means 192.168.1.129- 192.168.1.254 (we looose the 192.168.1.128 one and the 192.168.1.255 one) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
