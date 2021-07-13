@@ -26,7 +26,7 @@ ABOVE COMMAND WILL ADD A USER TO A GROUP SO THAT U WON"T NEED TO USE SUDO,
 eg - sudo usermod -aG docker harkirat30
 Now restart and see the magic, you would be able to run direct command --> docker images rather than sudo docker images
 
-- apt update means we are updating the package repository index 
+- **apt update means we are updating the package repository index **
 
 
 ******************************************************************************
@@ -38,7 +38,7 @@ pip defaults to installing Python packages to a system directory (such as /usr/l
 
 **************************************************************
  *Trying to login as a user sverma* --Logging in as a Different USer
- ---> Command -->> su -sverma
+ ---> Command -->> su - sverma
  
  # becoming a root user
  To become a root user your User need to have appropiate field added in visudo file - /etc/sudoers.tmp and 
@@ -59,7 +59,7 @@ pip defaults to installing Python packages to a system directory (such as /usr/l
  du -c : Total value by current Working Dir
  du -a : will give hidden files value also
  
- df -h : where my disk is mounted 
+**df -h : where my disk is mounted**
 
  ****************
  Note : Everything gets installed in usr/share

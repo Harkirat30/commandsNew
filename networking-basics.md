@@ -1,6 +1,6 @@
 
 **************************************************************************
-NETWORKING BASICS
+NETWORKING BASICS  ----->>>>
 
 what is a URI -->>anything after .com/
 
@@ -12,15 +12,16 @@ It represents --> protocol://FiftLevelDomain.4thLevel.3rdlevel.Domain(Frst+secon
 
 * IPV4 can be assigned from 1.1.1.1 to 255.255.255.255 and we are running out of IPV4 addresses
 
-**Solution to solve this problem -->> NAT**
+**Solution to solve this problem -->> NAT** (Network Address Translation)
 
 *IP addresses that the router in your home will asiign to your device begins with 192.168.something.something and of router is 192.168.0.something (internal address)
 
 *roter also has an external IP address which it uses to communicate with internet (it is called ISP IP address)
 
-*Also on every computer you see one IP address -->> 127.0.0.1  - It basiclly meams this computer , when you type it in your browser - u see local   host (Apache2 Ubuntu Default Page)
+*Also on every computer you see one IP address -->> 127.0.0.1  - It basiclly meams this computer , when you type it in your browser - u see localhost (Apache2 Ubuntu Default Page)
 *Similarly the 192.168.. address works the same
 
+NOTE:: HTTPD - Apache2 Web Server. Apache is the most commonly used Web server on Linux systems. Web servers are used to serve Web pages requested by client computers. Clients typically request and view Web pages using Web browser applications such as Firefox, Opera, Chromium, or Internet Explorer
 
 ***IFCONFIG** command in linux , in windows it is ipconfig
 
@@ -61,7 +62,7 @@ NETSTAT (Network Statistics) commands -->>>
 # checking for open ports
 
 1) netstat -antplF ---->> The coloumn which says local address, is appended by the port number which is open , STATE --LISTEN means open 
-if it says 127.0.0.1:53 -- it means the port 53 can be acccessed locally 
+if it says 127.0.0.1:53 -- it means the port 53 can be acccessed **locally** 
 but if it says 0.0.0.0:22 --> it means the port 22 can be accessed from anywhere i.e outside the local machine also 
 
 2) using nmap 

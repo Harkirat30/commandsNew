@@ -9,7 +9,7 @@ we can do git diff <filename> to see what changes have been made to the file
 *************************************
 
 Pre-requisite - (git checkout master and git pull origin master )
-1- Creating a new branch develop : git checkout -b develop
+1- Creating a new branch develop : **git checkout -b develop** (This will create a new branch from develop)
 2- Merging with origin and making it up to date - git push origin develop 
 # above command will merge all things to the previous branch we are in - that is master
 3- git add - this stages your changes for commiting
