@@ -36,3 +36,8 @@ release in which this feature will be incorporated may well be unknown at that p
 git config user.name "Author Name"
 git config user.email "author@email.com"
 
+
+
+NOTE:: After adding the public key in the bit bucket repo - > make sure you run command -->>> git config credential.helper store 
+and then it will automatically do the deed
+
