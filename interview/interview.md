@@ -1,16 +1,17 @@
-                                                                                 Interview questions 
+**********************Interview questions********************************************************************************************* 
 
 
 1) etcd port is 2379
-2) advertise client URLs is the address on which etcd listens - it happens to be on the Ip of server and port 2379 -- https://{internal-ip}:2379 , this URL should be configured on etcd server when it tries to reach the etcd server
-3) To see all keys stored by k8's run --> kubectl exec etcd-master -n kube-system etcdctl get / --prefix -keys-only
+2) advertise client URLs is the address on which etcd listens - it happens to be on the **Ip of server** and port 2379 -- https://{internal-ip}:2379 , this URL should be configured on etcd server when it tries to reach the etcd server
+3) To see all keys stored by k8's run --> **kubectl exec etcd-master -n kube-system etcdctl get / --prefix -keys-only**
 root Directory in the ouput is a registry, under that u have k8's constructs - minions, pods, replicasetss
 
 4) kubectl exec etcd-master -n kube-system -- sh -c "ETCDCTL_API=3 etcdctl get / --prefix --keys-only --limit=10 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt  --key /etc/kubernetes/pki/etcd/server.key" 
 
 5) IF cluster is deployed via kubeadm tool, u can see the certs at --> cat /etc/kubernetes/manifests/kube-apiserver.yaml
-6) in non kubeadm setup see the svc at --> cat /etc/systemd/system/kube-apiserver.service , or do ps -aux | grep kube-apiserver 
-7) Kube-proxy is a process that runs on every node, it's job is to look for new svc, and creates rules on each node to forward traffic to those services to the backend pods, (one way is using IP tables rules), it is deployed as Daemon set 
+6) in non kubeadm setup see the svc at --> cat /etc/systemd/system/kube-apiserver.service , or do **ps -aux | grep kube-apiserver** 
+7) *Kube-proxy* is a process that runs on every node, **it's job is to look for new svc**, and creates rules on each node to forward traffic to those services to the backend pods, (one way is using IP tables rules), it is deployed as **Daemon set** 
+
 8) kubectl scale --replicas=6 replicaset myall-replicaset (this won't change value in file)
 9) for pod1 to reach svc in diff namespace we do --->>   x.connect("svc-name.namespace.svc.cluster.local) 
 10) When a svc is created a DNS entry is automatically added in above format , (cluster.local is default domain name of k8's cluster, svc is sub-domain of service and then we have namespace)
@@ -30,9 +31,10 @@ this last applied config is stored in the live object config(k8's memory under a
 are used to record other details for inflammatory purpose.
 For example tool details like name, version build information etc or contact details, phone numbers, email
 ids etc, that may be used for some kind of integration purpose. 
-19) taint is on node and tolerant on pod, kubectl taint node node-name key=value:taint-effect(NoSchedule/Prefer-no-schedule/noExcute), toleration are added to pods,master node has a taint set to not accept pod
+19) taint is on node and tolerant on pod, **kubectl taint node node-name key=value:taint-effect(NoSchedule/Prefer-no-schedule/noExcute),** toleration are added to pods,master node has a taint set to not accept pod
 20) Taints and tolerations are only meant for restricting nodes for accepting certain pods, but that pods can be placed on diff nodes also
-21) IF the requirement is to restrict a certain pod to a certain node - then need to use nodeAffinity rules 
+21) 
+# IF the requirement is to restrict a certain pod to a certain node - then need to use nodeAffinity rules 
 22) nodeSelector - we assign the nodeSelector and under that add labels and pod moves to the node which has matching labels, we need to label the node before creating it
 23) Above thing won't meet complex requirements, so we use node Affinity (it's feature is that pod's are hosted on paticular nodes) 
 eg - we can use operator exists and that will ensure that if label exist the pod will fall on that node
@@ -40,8 +42,8 @@ eg - we can use operator exists and that will ensure that if label exist the pod
 the required pods will land on the specific node, but other pods can also land on them , so a combination of both can be used.
 25) basic limit --> 0.5 vcpu and 256 Mi, in docker a process can take as much memory and cpu required , if pod uses more than specified limits - cpu gets throttled (cannot use more cpu) but memory can be increased - but if it constantly uses more than limit - it is removed then 
 26) When a pod is created the containers are assigned a default CPU request of .5 and memory of 256Mi". For the POD to pick up those defaults you must have first set those as default values for request and limit by creating a LimitRange in that namespace.
-27) Use cases of Daemon set - Monitoring agent and log viewer, eg -kube-proxy or netwoking agent like weave-net 
-28) Daemonset is scheduled by using node affinity and default scheduler after v1.12 and before that we were using nodeName
+27) **Use cases of Daemon set - Monitoring agent and log viewer, eg -kube-proxy or netwoking agent like weave-net** 
+28) Daemonset is scheduled by using node affinity and default scheduler after v1.12 and before that we wre using nodeName
 29) We can configure kubelet to read manifests files in the designated folder - /etc/kubernetes/manifests , kubelet creates pods , kubelet works at pod level, 
 the Directory is passed in to the kubelet --> as --pod-manifest-path=/etc/kubernetes/manifests, 
 instead of specfying the value in kubelet.service file , we specify a kubeconfig file, --kubeconfig=/var/lib/kubelet/kubeconfig and in that file define the path as staticPodPath : /etc/kubernetes/manifests
@@ -98,13 +100,12 @@ docker run --name ubuntu-sleeper ubuntu-sleeper 10 , the additional apended valu
 So basically with the agrs field in the pod definition file we ovveride the CMD in dockerfile, but if u want to override the ENTRYPOINT , 
 in docker we do like --> docker run --name ubuntu-sleeper --entrypoint sleep2.0 ubuntu-sleeper 10 
 
-while in pod - the field will be command field --> command: ["sleep2.0"] , so ENTRYPOINT is replaced with command , while CMD is replaced with args
-In traydstream we have args - and that runs a shell script (because args will get apended when container is run and hence a shell script will run)
+while in pod - the field will be command field --> command: ["sleep2.0"] , so ENTRYPOINT is replaced with **command** , while **CMD is replaced with args**
+In traydstream we have args - and that runs a shell script (because args will get run when container is run and hence a shell script will run)
 
 so to summarize there are two fields that correspond to two instructions
 in the docker file.
-The command field in pod definition file overrides the entry point instruction and the args field overrides the command instruction
-in the docker file.
+**The command field in pod definition file overrides the entry point instruction and the args field overrides the command instruction in the docker file**
 Remember it is not the command field that overrides the CMD instruction in the docker file.
 
 39) Specifying env variable in Docker --> docker run -e APP_COLOR=pink simple-webapp-color
@@ -113,7 +114,7 @@ Remember it is not the command field that overrides the CMD instruction in the d
 42) to see created secrets and values use --> kubectl get secret <secret-name> -o yaml 
 43) decoding a hashed value --> echo -n 'wdwdddwd2' | base 64 --decode 
 44) In trydstream we inject secrets and configmaps as single env variables - because in this we we create one secret and configmap and then whatever relevant obj required 
-45) We can Enabling Encryption at Rest for Secrets so they are stored encrypted in ETCD. (Solution)
+45) **We can Enabling Encryption at Rest for Secrets so they are stored encrypted in ETCD. (Solution)**
 Also the way kubernetes handles secrets. Such as:
 A secret is only sent to a node if a pod on that node requires it.
 Kubelet stores the secret into a tmpfs so that the secret is not written to disk storage.
@@ -134,7 +135,7 @@ Velero by heptaio is a soln which is used to query the kube-apiserver and take b
 if we are using managed kubernetes env - we might not have acccess to the etcd server
 54) Kubernetes primitives -
 
-- Controlling access to kube-api-server (who can access and what they can do), who can access -> Authentiction - using usernames and passwords, usernames or tokens, certificates or integration with expermal authentication provider like LDAP, for machines we create service account, 
+- Controlling access to kube-api-server (who can access and what they can do), who can access -> Authentiction - using usernames and passwords, usernames or tokens, certificates or integration with external authentication provider like LDAP, for machines we create service account, 
 what can they do - is determined by authorisation mechanisms, RBAC , or ABAC(attribute based access controls) node authorisation etc
 - All communication between the components is secured using TLS encryption.
 - And communication - by default all pods can access all pods within the cluster - this can be limited by using Network Policies 
@@ -429,16 +430,16 @@ Note: -v is outdated option, we use the mount option
 
 docker run --mount type=bind,source=/data/tmp/volume,target=/var/lib/mysql mysql
 
-Docker uses Storage drivers to enable layered Arcitecture, 
+**Docker uses Storage drivers to enable layered Arcitecture,** 
 So who is responsible for doing all of these operations, maintaining the layered architecture, creating
 a writable layer, moving files across layers to enable copy and write, etc? It's the stories Drivers.So Docker uses stories drivers to enable layered architecture.
-Some common storage drivers are --> aufs, zfs, btrfs, Device mapper, Overlay, overlay2
+Some common storage drivers are --> **aufs, zfs, btrfs, Device mapper, Overlay, overlay2**
 
 Selection of storage driver depends on the underlying OS used, for eg - with Ubuntu Default Storage driver is aufs. Docker uses best storage drivers based on OS automatically.
 
 67) Volume driver Plugins 
 Volumes are not handled by Storage drivers, they are handled by Volume driver plugins
-The default volume driver plug in is local.
+**The default volume driver plug in is local.**
 The local volume plug in helps create a volume on the Docker host and store its data under the /var/lib/docker volumes directory.
 other volume driver plugins --> azure file storage | convoy | DigitalOcean | gce-docker | NetApp | RexRay | Portworx 
 
@@ -699,7 +700,7 @@ To delete user
 
 
 
-______________________________________________________________________________DOCKER_________________________________________________________________________________________________________________________
+______________________________________________________________________________DOCKER____________________________________________________________________
 
 1) Container is a way to package application with all dependencies and configuration, and it is portable just like an artifact 
 2) Container has own isolated env(packaged with all needed configuration) - where all the dependencies get installed and added, basically docker doesn't install anything on the server
@@ -821,7 +822,7 @@ SO it will stop the containers and it will also remove the network
 
 
 
-***************************************syntax of docker-file***********************************************************************************************************************************
+*******************syntax of docker-file***************************************************************************************************************
 
 FROM node:13-alpine       (<base-image>)
 ENV name=harkirat \
@@ -845,12 +846,13 @@ Note: Name of Dockerfile has to be DockerFile
 # Now command to build an image --> we need to give name and tag to newly created image (-t is used for tagging, after that we need to specify the docker file)
 
 ---->> docker build -t my-app:1.0 .  (. because we have dockerfile in same dir) 
+# docker build -t means we are building and tagging the image together 
 
 # command to delete image -->> docker rmi <image-name> 
 # command to delete container --> docker rm <container-name or id>
 
 Note: some containers do not have bash so we might need to exec using sh(shell)
-# how to check env varibles for that specific container --->>> do exec inside the ntainer and do env
+# how to check env varibles for that specific container --->>> do exec inside the container and run command --->> env
 
 **********creating private repo and pushing the image there*****************************************************************
 1) authenticate to repo
@@ -871,9 +873,9 @@ After tag we do docker push
 
 # Now after all images have been tagged and push we can use Docker-compose to fetch the latest images and deploy them on the server 
 
-- For fetching the image from a private repo - we would need a Docker login first
+- For fetching the image from a private repo - we would need a Docker login first, but in case of k8's we create an image pull secret
 
-*******************************************DOCKER VOLUMES**************************************************************************************************
+*******************************DOCKER VOLUMES**************************************************************************************************
 
 1) They are used for Data Persistence in containers or other Stateful Applications
 2) So Folder in a host file system is mounted into the virtual file system of Docker
@@ -919,6 +921,25 @@ Our volumes will have hash and name appended.
 NOTE : See how we do it in Traydstream
 
 
+1) Command -> docker run -it -d ubuntu
+This will keep running the container in Daemon mode -( -d is for daemon)
+-it is for i->interactive and t is for tty
+-d means Daemon mode and it will send it to the background
+
+Now above command will send it to a detached mode and if you want to connect to that container we have the command->
+docker attach <containmer-id>
+you will be re-directed to the container shell in interactive mode
+
+------------Docker important commands ------
+
+1) docker exec -ti <container-name> command.sh
+2) docker logs -ft <container-name>
+3) docker-compose up
+4) docker pull image
+5) docker [start] [stop] container_name
+
+
+DOCKER PRUNE ??
 
 
    

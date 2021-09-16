@@ -144,3 +144,28 @@ command ->> date
 26) date -d 11 days +"%d-%m-%y"
 27) date -d -11 days +"%d-%m-%y"
 28) date -d "-33 days" +"%d-%m-%y" --value comes as 08-05-21 and current date is 10-06-21
+
+
+
+*********************
+1) root user runs with id 0
+2) How to check the files which are just changed --> we can use find command
+3) 
+eval $(ssh-agent) --> means activating your ssh agent 
+
+
+
+**************************************************************************************************************************************
+1) How to see what we can use expressions in shell scripts 
+
+# man test 
+
+# Customising prompt 
+We have to customise the **$PS1** variable in .bash_profile and .bashrc 
+
+2) Difference between bashrc and bash_profile
+
+bashrc commands and terminal will look whenever you open the terminal
+and bash_profile runs when runs whenever you login to the default shell
+
+eg - type sh in your system and the terminal you see comes from the shell in bash_profile
