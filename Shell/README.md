@@ -58,3 +58,137 @@ for `` we can run a command
 11) Creating a variable.sh using template.sh
 
 NOte: variables should not start with a number, can have underscores, cannot have special characters
+
+# special Variables 
+
+1) $* - It stores the complete set of positional arguments as a single string
+2) $# - It is set to the number of arguments specified
+3) $1 - first argument
+4) $2 - second argument
+5) $0 - name of executed command  
+6) "$@" - each quoted string treated as a separate argument
+7) $? - exit status of last command  , ->note : if command is executed successfully, it will give 0 value  **(exit code status lie between 0-255)**
+8) $$ - PID of current shell
+9) $! - PID of last background job
+
+Running script as --> sh specialvariables.sh harkirat singh is my name and i am learning shell
+
+NOTE: with echo -e , the back escape characters are given special meaning 
+
+# Sub shell 
+
+syntax -->>  $(( ))
+
+- `expr $a \* $b`" , * has to be escaped as it as a diff meaning in shell script 
+
+# relational operators 
+
+1) -lt means less than       OR     >
+2) -le means less than or equal to    OR =>
+3) -gt means greater than       OR   <
+4) -ge means greater than or equal to  OR <=
+5) -eq means equal to         OR   =
+6) -ne means not equal to     OR !=
+
+# test command
+1) test 5 -gt 2 && echo "Yes"
+2) test condition && true-command || false-command
+3) test condition || false-command
+4) test condition && true-command
+
+# logical operators
+# to write multiple conditions, validate multiple conditions and execute the statament 
+
+1) AND   -->>> (-a) (&&)
+2) OR    -->>> (-o) ||
+3) NOT   -->>> (-n) !
+
+# if statement 
+
+Note: touch test{1..100}.txt will create 100 files 
+starting from test1.txt to test100.txt
+
+Syntax:
+
+if [ expression ]
+then
+   statement
+fi
+
+OR 
+if [ expression ]; then
+   statement
+fi
+
+# if el if statement 
+if [ expression 1 ]
+then
+   Statement(s) to be executed if expression 1 is true
+elif [ expression 2 ]
+then
+   Statement(s) to be executed if expression 2 is true
+elif [ expression 3 ]
+then
+   Statement(s) to be executed if expression 3 is true
+else
+   Statement(s) to be executed if no expression is true
+fi
+
+# nested if statements
+a=3
+
+if [ "$a" -gt 0 ]
+then
+  if [ "$a" -lt 5 ]
+  then
+    echo "The value of \"a\" lies somewhere between 0 and 5."
+  fi
+fi
+
+# while loop syntax
+while command
+do
+   Statement(s) to be executed if command is true
+done
+
+# for loop syntax
+
+for var in word1 word2 ...wordn
+do
+   Statement to be executed
+done
+
+11) ping -c 1 (count)
+    c is for count and ping is above command is used to ping one time
+
+# case statement syntax
+case word in
+   pattern1)
+      Statement(s) to be executed if pattern1 matches
+      ;;
+   pattern2)
+      Statement(s) to be executed if pattern2 matches
+      ;;
+   pattern3)
+      Statement(s) to be executed if pattern3 matches
+      ;;
+   *)
+     Default condition to be executed
+     ;;
+esac
+
+# continue statement 
+
+while something
+do 
+   condition
+         cmd1
+         cmd2
+do want to continue
+done
+
+
+Continue statement can be utilised with any loop
+
+if Continue statement is satisfied it moves up the loop again
+Continue statements is used to do repeated tasks again and again
