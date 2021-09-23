@@ -192,3 +192,85 @@ Continue statement can be utilised with any loop
 
 if Continue statement is satisfied it moves up the loop again
 Continue statements is used to do repeated tasks again and again
+
+# set command
+A single set command can be used to set many variables, but such a use is not recommended. set is for setting shell variables, which do not propagate to child shells. To propagate to a child shell, use environment variables. A child shell would be created when a new shell is started, such as when running a script.
+
+Set inbuilt bash features assign the positional arguments to a script
+
+# set command assigns the positional parameters 
+
+# shift in built bash features
+
+Shift transfers the contents of a positional parameter to its immediate lower numbered position, this is done as many time as the statement is called 
+
+shift 3
+it will shift 3 parameters
+
+# functions
+Functions compute a value and returns a value at a given time
+A larger script can be divided into multiple functions and that functions can be called as many times as u want anywhere in the script
+
+SYNTAX:
+
+function name (){
+Statements
+Values
+}
+
+name                # this means we are calling function
+
+
+1) basename command
+basename /home/harkirat30/Documents/Harkirat-GIT/commandsNew/git.md
+output will be -> git.md
+
+2) man test
+   -f FILE means file exist and is a regular file
+
+if [ -f $file ]; then  (this will check if $file exist or not)
+
+3) date +%F - It gives 2021-09-19 answer
+4) "/home/harkirat30/$(basename ${1}).$(date +%F).$$" 
+   see the brackets and syntax {}
+
+# until loop 
+
+until command
+do
+   Statement(s) to be executed until command is true
+done
+
+-- Until loop executes the statement based on the false impression
+
+# arrays
+
+1) Korn and bash shell supports one dimensional arrays
+2) In python we call them as lists
+3) eg - > Month=(0 1 3 4 2)
+          echo ${Month[0]}   #0
+          echo ${Month[1]}   #1
+          echo $(Month[@])   #0 1 3 4 2
+          echo $(#Month[@])  $5 (counts no of elements)
+4) fruits=( "Apple" "Banana" "Pineapple" "Potato" )
+   fruits[1]='Waterme lon'      #note single quotes
+   Arrays are mutable
+
+
+# Working with flags - Getopts
+
+getopts is a very convenient bash script utility, which helps you to conveniently and gracefully handle the passing of flags(short version), and arguments in a clean, standardized manner. Instead of having the developer manually handle the flags passed to a script, this provides a handy way of handling this when iterating through a while loop
+
+
+# monitoring CPU utilisation
+
+
+
+
+
+
+
+
+
+
+# awk command
